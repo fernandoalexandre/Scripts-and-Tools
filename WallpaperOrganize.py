@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 #   Image Organize - Organizes Wallpapers by resolution to a target location.
 #       Needs for the folders "WidthxHeight" folders already created at destLoc
-#       aswell as the "unsorted" folder
+#       aswell as the "unsorted" folder.
 #.
 #   Copyright (C) 2009  Fernando Alexandre
 #
@@ -25,7 +25,7 @@ import shutil
 import hashlib
 
 unsortedFolder = 'unsorted'
-destLoc = '/Users/kernl/Pictures/Wallpapers/'
+destLoc = os.environ['HOME'] + '/Pictures/Wallpapers/'
 dest = []
 li = []
 
