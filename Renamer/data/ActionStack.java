@@ -15,7 +15,7 @@
 */
 package data;
 
-import interfacing.MainFrame;
+import gui.MainFrame;
 
 import java.util.Stack;
 

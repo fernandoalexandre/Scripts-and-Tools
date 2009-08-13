@@ -17,8 +17,8 @@ package data;
 
 import java.io.File;
 
-import interfacing.FileLabel;
-import interfacing.MainFrame;
+import gui.FileLabel;
+import gui.MainFrame;
 
 public class RedoAction extends Action{
 	

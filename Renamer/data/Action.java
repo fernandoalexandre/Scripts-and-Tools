@@ -15,7 +15,7 @@
 */
 package data;
 
-import interfacing.FileLabel;
+import gui.FileLabel;
 
 abstract class Action implements IAction{
 

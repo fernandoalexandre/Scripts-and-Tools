@@ -15,7 +15,7 @@
 */
 import javax.swing.JFrame;
 
-import interfacing.*;
+import gui.*;
 
 public class Main {
 

@@ -15,7 +15,7 @@
 */
 package data;
 
-import interfacing.FileLabel;
+import gui.FileLabel;
 
 public interface IAction {
 	

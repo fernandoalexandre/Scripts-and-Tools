@@ -15,8 +15,8 @@
 */
 package data;
 
-import interfacing.FileLabel;
-import interfacing.MainFrame;
+import gui.FileLabel;
+import gui.MainFrame;
 
 import java.io.File;
 
