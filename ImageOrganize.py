@@ -26,6 +26,7 @@ import hashlib
 
 unsortedFolder = 'unsorted'
 destLoc = os.environ['HOME'] + '/Pictures/Wallpapers/'
+sep = 'x'
 dest = []
 li = []
 
@@ -41,7 +42,7 @@ def process(targetLoc):
             try:
                 if f !=".DS_Store":
                     im = Image.open(os.path.join(targetLoc, f)) 
-                    key = "%dx%d" % (im.size)
+                    key = "%d%s%d" % (im.size[0], sep, im.size[1])
                     if key in dest:
                         shutil.copy(os.path.join(targetLoc, f),
                                     os.path.join(os.path.join(destLoc, key), f))

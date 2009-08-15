@@ -1,0 +1,17 @@
+Renamer (Java) -
+Useful for frame by frame animation. Renames image files in a folder to a sequence as "project_0001.jpg" and so on. 
+
+Usage:
+Double-click to Rename.
+Right click to Preview.
+
+Use the appropriate fields to change project name and counter.
+
+Image Organize (Python) -
+Organizes Images by resolutions. The way to define which resolutions
+to sort is done by creating the folders previously with the name "width[sep]height" (sep can be redefined in the script itself) the ones that do not fit these parameters will get sorted to the folder "unsorted".
+
+Example of usage:
+% python WallpaperOrganize.py ~/Desktop/Wallpapers
+
+Will transfer all the images by resolutions from ~/Desktop/Wallpapers to ~/Pictures/Wallpapers.
