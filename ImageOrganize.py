@@ -60,6 +60,10 @@ def populate_dest():
     for root, dirs, files in os.walk(destLoc):
         for d in dirs:
             dest.insert(0, d)
+    try:
+        dest.index(unsortedFolder)
+    except ValueError:
+        os.makedirs(os.path.join(destLoc, unsortedFolder))
     return
 
 def process_dupes(loc):
