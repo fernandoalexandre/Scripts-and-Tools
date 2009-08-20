@@ -29,19 +29,20 @@ destLoc = os.environ['HOME'] + '/Pictures/Wallpapers/'
 sep = 'x'
 dest = []
 li = []
+initText = """Wallpaper Organize    Copyright (C) 2009 Fernando Alexandre
+
+This program comes with ABSOLUTELY NO WARRANTY;
+This is free software, and you are welcome to redistribute it
+under certain conditions; More information at the begining of source code.\n"""
 
 def process(targetLoc):
-
     print "%s -> %s\n" % (targetLoc, destLoc)
 
     for root, dirs, files in os.walk(targetLoc):
-        for d in dirs:
-            process(os.path.join(targetLoc, d))
-
         for f in files:
             try:
                 if f !=".DS_Store":
-                    im = Image.open(os.path.join(targetLoc, f)) 
+                    im = Image.open(os.path.join(targetLoc, f))
                     key = "%d%s%d" % (im.size[0], sep, im.size[1])
                     if key in dest:
                         shutil.copy(os.path.join(targetLoc, f),
@@ -54,6 +55,8 @@ def process(targetLoc):
 
             except IOError, e:
                 print "File IO Error: %s" % (f)
+        for d in dirs:
+            process(os.path.join(targetLoc, d))
     return
 
 def populate_dest():
@@ -86,11 +89,7 @@ def process_dupes(loc):
     return
 
 def main():
-    print """Wallpaper Organize    Copyright (C) 2009 Fernando Alexandre
-
-This program comes with ABSOLUTELY NO WARRANTY;
-This is free software, and you are welcome to redistribute it
-under certain conditions; More information at the begining of source code.\n"""
+    print initText
 
     if len(sys.argv) > 1:
         populate_dest()
@@ -103,6 +102,7 @@ under certain conditions; More information at the begining of source code.\n"""
         print "Finished."
     else:
         print "Usage: python WallpaperOrganize.py <destination folder(s)>"
+    return
 
 if __name__ == "__main__":
     main()
