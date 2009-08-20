@@ -1,3 +1,12 @@
+downloader (Python) -
+
+A simple command line downloader. Supports HTTP/FTP. For FTP there will be a
+prompt asking for a username/password which can be left blank for anonymous login.
+
+Example of usage:
+% python downloader.py ~ http://www.python.org/ftp/python/3.1.1/Python-3.1.1.tgz
+    ftp://someserver.com/some-stuff.zip
+
 Renamer (Java) -
 
 Useful for frame by frame animation. Renames image files in a folder to a
