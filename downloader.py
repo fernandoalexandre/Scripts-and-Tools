@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 #   downloader -
 #       A simple command line downloader. Supports HTTP/FTP. For FTP there is
-#       a prompt asking for a username/password which can be left blank for 
+#       a prompt asking for a username/password which can be left blank for
 #       anonymous login.
 #
 #   Copyright (C) 2009  Fernando Alexandre
@@ -118,11 +118,9 @@ def ftp_dl(p_url, dest):
         resp = conn.size(path_tuple[1]) # Is not standardized
         print "Downloading %s to %s (%s bytes)..." % (path_tuple[1], dest, get_ftp_size(resp))
         conn.retrbinary('RETR ' + path_tuple[1], file.write)
+        print "Finished!"
     except:
         print 'Error: Could not download %s.' % path_tuple[1]
-        conn.close()
-        file.close()
-        return
 
     conn.close()
     file.close()
