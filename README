@@ -1,6 +1,6 @@
 downloader (Python) -
 
-A simple command line downloader. Supports HTTP/FTP. For FTP there will be a
+A simple command line downloader. Supports HTTP/FTP. For FTP there is a
 prompt asking for a username/password which can be left blank for anonymous login.
 
 Example of usage:
@@ -31,3 +31,6 @@ Example of usage:
 
 Will transfer all the images by resolutions from ~/Desktop/Wallpapers to
 ~/Pictures/Wallpapers.
+
+All the code in this repository is released under GPLv3.
+For more information about GPLv3 please go to <http://www.gnu.org/licenses/>.

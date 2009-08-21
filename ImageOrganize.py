@@ -24,8 +24,8 @@ import Image
 import shutil
 import hashlib
 
-unsortedFolder = 'unsorted'
-destLoc = os.environ['HOME'] + '/Pictures/Wallpapers/'
+unsortedDir = 'unsorted'
+destDir = os.environ['HOME'] + '/Pictures/Wallpapers/'
 sep = 'x'
 dest = []
 li = []
@@ -35,42 +35,42 @@ This program comes with ABSOLUTELY NO WARRANTY;
 This is free software, and you are welcome to redistribute it
 under certain conditions; More information at the begining of source code.\n"""
 
-def process(targetLoc):
-    print "%s -> %s\n" % (targetLoc, destLoc)
+def process(targetDir):
+    print "%s -> %s\n" % (targetDir, destDir)
 
-    for root, dirs, files in os.walk(targetLoc):
+    for root, dirs, files in os.walk(targetDir):
         for f in files:
             try:
                 if f !=".DS_Store":
-                    im = Image.open(os.path.join(targetLoc, f))
+                    im = Image.open(os.path.join(targetDir, f))
                     key = "%d%s%d" % (im.size[0], sep, im.size[1])
                     if key in dest:
-                        shutil.copy(os.path.join(targetLoc, f),
-                                    os.path.join(os.path.join(destLoc, key), f))
+                        shutil.copy(os.path.join(targetDir, f),
+                                    os.path.join(os.path.join(destDir, key), f))
                         print "%s -> %s" % (f, key)
                     else:
-                        shutil.copy(os.path.join(targetLoc, f),
-                                     os.path.join(os.path.join(destLoc, unsortedFolder), f))
-                        print "%s -> %s" % (f, unsortedFolder)
+                        shutil.copy(os.path.join(targetDir, f),
+                                     os.path.join(os.path.join(destDir, unsortedDir), f))
+                        print "%s -> %s" % (f, unsortedDir)
 
             except IOError, e:
                 print "File IO Error: %s" % (f)
         for d in dirs:
-            process(os.path.join(targetLoc, d))
+            process(os.path.join(targetDir, d))
     return
 
 def populate_dest():
-    for root, dirs, files in os.walk(destLoc):
+    for root, dirs, files in os.walk(destDir):
         for d in dirs:
             dest.insert(0, d)
     try:
-        dest.index(unsortedFolder)
+        dest.index(unsortedDir)
     except ValueError:
-        os.makedirs(os.path.join(destLoc, unsortedFolder))
+        os.makedirs(os.path.join(destDir, unsortedDir))
     return
 
 def process_dupes(loc):
-    print "%s\n" % (loc)
+    print "%s" % (loc)
     for root, dirs, files in os.walk(loc):
         for f in files:
             try:
@@ -98,10 +98,10 @@ def main():
             process(arg)
             print "Finished %s." % (arg)
         print "Starting to remove duplicates..."
-        process_dupes(destLoc)
+        process_dupes(destDir)
         print "Finished."
     else:
-        print "Usage: python WallpaperOrganize.py <destination folder(s)>"
+        print "Usage: python %s <destination folder(s)>" % sys.argv[0]
     return
 
 if __name__ == "__main__":
