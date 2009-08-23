@@ -22,7 +22,7 @@ Image Organize (Python) -
 
 Organizes Images by resolutions. The way to define which resolutions
 to sort is done by creating the folders previously with the name
-"width[sep]height" (by default sep = 'x') the ones that do not fit these
+"[width][sep][height]" (by default sep = 'x') the ones that do not fit these
 resolutions will be sorted to "unsorted" folder (is automatically created if it
 doesn't exist).
 

@@ -34,6 +34,8 @@ This is free software, and you are welcome to redistribute it
 under certain conditions; More information at the begining of source code.\n"""
 
 # HTTP
+
+# Saves a file to /<dest>/<file> with the contents of <stream>
 def save_file(stream, dest, file):
     if os.path.isfile(os.path.join(dest, file)):
         print "File %s already exists. Overwriting..." % file
@@ -41,11 +43,14 @@ def save_file(stream, dest, file):
     file.write(stream)
     return
 
+# Returns the size of the header Content-Length taking in account that some
+# servers do not broadcast the size of a file.
 def get_http_size(resp):
     if resp.getheader('Content-Length') == None:
         return '?'
     return resp.getheader('Content-Length')
 
+# Establishes a connections and downloads a file from <p_url> to <dest>
 def http_dl(p_url, dest):
     try:
         conn = httplib.HTTPConnection(p_url.netloc)
@@ -58,7 +63,7 @@ def http_dl(p_url, dest):
     if resp.status == httplib.OK:
         print "Downloading %s to %s (%s bytes)..." % (p_url.path, dest, get_http_size(resp))
         split = url.split('/')
-        save_file(resp.read(), dest,split[len(split) - 1])
+        save_file(resp.read(), dest, split[-1])
         print "Finished!"
     else:
         print "Error: %s %s" % (resp.status, resp.reason)
@@ -66,18 +71,24 @@ def http_dl(p_url, dest):
     return
 
 # FTP
+
+# Returns a tuple (path, file) from a /path/file string. Useful to use the
+# cwd and the retrbinary commands.
 def get_path(path):
     split = path.replace('//', '/').split('/')
     result = ''
-    for i in split[1:(len(split) - 1)]:
+    for i in split[1:-1]:
             result = result + '/%s' % i
-    return (result, split[len(split) - 1])
+    return (result, split[-1])
 
+# Returns the size of a file taking into account that the size command is not
+# yet standardized.
 def get_ftp_size(size):
     if size != None:
         return '?'
     return str(size)
 
+# Establishes a connection and downloads a file from <p_url> to <dest>.
 def ftp_dl(p_url, dest):
     try:
         conn = FTP(p_url.netloc)
@@ -127,6 +138,7 @@ def ftp_dl(p_url, dest):
     print "Finished!"
     return
 
+# Determines the type of download of url and calls the correct function.
 def download(url, dest):
     p_url = urlparse.urlsplit(url)
     if p_url.scheme == 'http':

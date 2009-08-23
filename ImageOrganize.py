@@ -35,6 +35,7 @@ This program comes with ABSOLUTELY NO WARRANTY;
 This is free software, and you are welcome to redistribute it
 under certain conditions; More information at the begining of source code.\n"""
 
+# Organizes the images by resolution from <targetDir> to <destDir>.
 def process(targetDir):
     print "%s -> %s\n" % (targetDir, destDir)
 
@@ -59,6 +60,9 @@ def process(targetDir):
             process(os.path.join(targetDir, d))
     return
 
+# Populates <dest> list with all the directories in the <destDir>. Only the
+# appropriate [width][sep][height] directories will be used. Creates "unsorted"
+# directory if it does not exist.
 def populate_dest():
     for root, dirs, files in os.walk(destDir):
         for d in dirs:
@@ -69,6 +73,8 @@ def populate_dest():
         os.makedirs(os.path.join(destDir, unsortedDir))
     return
 
+# Detects and deletes all the duplicates in the <destLoc> and all the directories
+# within it.
 def process_dupes(loc):
     print "%s" % (loc)
     for root, dirs, files in os.walk(loc):
