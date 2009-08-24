@@ -12,54 +12,88 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */
 package gui;
 
 import javax.swing.JLabel;
 
-
+/**
+ * Represents the Label shown in the file list.
+ * 
+ * @author Fernando Alexandre
+ */
 public class FileLabel extends JLabel {
 
 	private static final long serialVersionUID = 1L;
 
-	private static final String[] IMAGE_EXTENSIONS = 
-	{"jpg", "jpeg", "gif", "png", "raw", "tiff", "bmp"};
+	/**
+	 * Array with the valid image extensions.
+	 */
+	private static final String[] IMAGE_EXTENSIONS = { "jpg", "jpeg", "gif",
+			"png", "raw", "tiff", "bmp" };
 
-	public FileLabel(String fileName)
-	{
+	/**
+	 * Creates a FileLabel.
+	 * 
+	 * @param fileName
+	 *            Name of the file.
+	 */
+	public FileLabel(String fileName) {
 		super(fileName);
 	}
 
-	public String getFileName()
-	{
+	/**
+	 * Get the file name.
+	 * 
+	 * @return The file name.
+	 */
+	public String getFileName() {
 		return super.getText();
 	}
 
-	public void setFileName(String fileName)
-	{
+	/**
+	 * Sets the file name.
+	 * 
+	 * @param fileName
+	 *            The desired file name.
+	 */
+	public void setFileName(String fileName) {
 		super.setText(fileName);
 	}
 
-	public String getExtension()
-	{
+	/**
+	 * Get the extension of the file.
+	 * 
+	 * @return The extension of the file.
+	 */
+	public String getExtension() {
 		String[] result = getFileName().split("\\.");
-		if (result.length > 1) 
+		if (result.length > 1)
 			return result[result.length - 1];
 		else
 			return null;
 	}
 
-	public String getImagePath()
-	{
-		return MainFrame.WORKING_DIR + MainFrame.getSystemPathSymbol() + getFileName();
+	/**
+	 * Gets the path to the Image.
+	 * 
+	 * @return String with the path to the image.
+	 */
+	public String getImagePath() {
+		return MainFrame.WORKING_DIR + MainFrame.getSystemPathSymbol()
+				+ getFileName();
 	}
 
-	public boolean isImage()
-	{
+	/**
+	 * Determines if the file is an image or not.
+	 * 
+	 * @return Returns true if the file is an image. False otherwise.
+	 */
+	public boolean isImage() {
 		String fileExtension = getExtension();
-		if(fileExtension != null)
-			for(String e : IMAGE_EXTENSIONS)
-				if(fileExtension.toLowerCase().compareTo(e) == 0)
+		if (fileExtension != null)
+			for (String e : IMAGE_EXTENSIONS)
+				if (fileExtension.toLowerCase().compareTo(e) == 0)
 					return true;
 		return false;
 	}

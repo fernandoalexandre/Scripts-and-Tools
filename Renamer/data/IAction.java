@@ -12,22 +12,57 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */
 package data;
 
 import gui.FileLabel;
 
+/**
+ * Interface of an Action.
+ * 
+ * @author Fernando Alexandre
+ */
 public interface IAction {
-	
+
+	/**
+	 * Gets the counts
+	 * 
+	 * @return Counter value.
+	 */
 	public int getCounter();
-	
+
+	/**
+	 * Gets the original file name.
+	 * 
+	 * @return String with original file name.
+	 */
 	public String getOriginalFile();
-	
+
+	/**
+	 * Gets the modified file name.
+	 * 
+	 * @return String with modified file name.
+	 */
 	public String getModifiedFile();
-	
+
+	/**
+	 * Gets the label object.
+	 * 
+	 * @return FileLabel object.
+	 */
 	public FileLabel getLabel();
-	
+
+	/**
+	 * Debug string representing the Action.
+	 * 
+	 * @return Debug string.
+	 */
 	public String toString();
 
+	/**
+	 * Applies the action.
+	 * 
+	 * @return True if the action was applied, false otherwise.
+	 */
 	boolean apply();
 }

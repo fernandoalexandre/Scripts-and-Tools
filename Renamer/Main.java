@@ -12,17 +12,30 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */
 import javax.swing.JFrame;
 
 import gui.*;
 
+/**
+ * Main Class
+ * 
+ * @author Fernando Alexandre
+ */
 public class Main {
 
+	/**
+	 * Main window.
+	 */
 	public static JFrame main;
 
-	public static void main(String[] args) 
-	{
+	/**
+	 * Program's entry point
+	 * 
+	 * @param args
+	 *            Arguments from the console.
+	 */
+	public static void main(String[] args) {
 		main = new MainFrame();
 
 		main.setVisible(true);

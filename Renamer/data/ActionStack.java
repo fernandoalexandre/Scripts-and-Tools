@@ -12,61 +12,78 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */
 package data;
 
 import gui.MainFrame;
 
 import java.util.Stack;
 
+/**
+ * Represents the controler of undo/redo stacks.
+ * 
+ * @author Fernando Alexandre
+ */
 public class ActionStack {
 
+	/**
+	 * Stack with undo actions.
+	 */
 	private Stack<IAction> undo;
+
+	/**
+	 * Stack with redo actions.
+	 */
 	private Stack<IAction> redo;
 
-	public ActionStack()
-	{
+	/**
+	 * Creates an ActionStack.
+	 */
+	public ActionStack() {
 		undo = new Stack<IAction>();
 		redo = new Stack<IAction>();
 	}
 
-	public void saveAction(IAction action)
-	{
-		if(action.getClass().equals(RedoAction.class))
+	/**
+	 * Saves an action to the right stack.
+	 * 
+	 * @param action
+	 *            IAction to be saved.
+	 */
+	public void saveAction(IAction action) {
+		if (action.getClass().equals(RedoAction.class))
 			redo.add(action);
 		else
 			undo.add(action);
 	}
 
-	public void undo()
-	{
-		if(!undo.empty())
-		{
+	/**
+	 * Undo's an action.
+	 */
+	public void undo() {
+		if (!undo.empty()) {
 			IAction curr = undo.pop();
-			if (!curr.apply())
-			{
+			if (!curr.apply()) {
 				undo.push(curr);
-				return ;
+				return;
 			}
 			redo.push(new RedoAction(curr));
-		}
-		else
+		} else
 			MainFrame.setStatusMessage(MainFrame.ERR_NOACTION);
 	}
 
-	public void redo()
-	{
-		if(!redo.empty())
-		{
+	/**
+	 * Redo's an action.
+	 */
+	public void redo() {
+		if (!redo.empty()) {
 			IAction curr = redo.pop();
-			if (!curr.apply())
-			{
+			if (!curr.apply()) {
 				redo.push(curr);
-				return ;
+				return;
 			}
 			undo.push(new UndoAction(curr));
-		}
-		else
+		} else
 			MainFrame.setStatusMessage(MainFrame.ERR_NOACTION);
 	}
 }

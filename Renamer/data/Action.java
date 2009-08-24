@@ -12,54 +12,111 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */
 package data;
 
 import gui.FileLabel;
 
-abstract class Action implements IAction{
+/**
+ * Represents an Action.
+ * 
+ * @author Fernando Alexandre
+ */
+abstract class Action implements IAction {
 
+	/**
+	 * Counter's value.
+	 */
 	private int counter;
+
+	/**
+	 * Modified file name.
+	 */
 	private String modifiedFile;
+
+	/**
+	 * Original file name.
+	 */
 	private String originalFile;
+
+	/**
+	 * Label in file list.
+	 */
 	private FileLabel label;
 
-	protected Action(int currentCounter, String originalFile, String modifiedFile, FileLabel label)
-	{
+	/**
+	 * Creates an Action.
+	 * 
+	 * @param currentCounter
+	 *            Counter value when action was created.
+	 * @param originalFile
+	 *            Original file name.
+	 * @param modifiedFile
+	 *            Modified file name.
+	 * @param label
+	 *            Point to the label in the file list.
+	 */
+	protected Action(int currentCounter, String originalFile,
+			String modifiedFile, FileLabel label) {
 		this.counter = currentCounter;
 		this.modifiedFile = modifiedFile;
 		this.originalFile = originalFile;
 		this.label = label;
 	}
 
-	public int getCounter()
-	{
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see data.IAction#getCounter()
+	 */
+	public int getCounter() {
 		return counter;
 	}
 
-	public String getOriginalFile()
-	{
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see data.IAction#getOriginalFile()
+	 */
+	public String getOriginalFile() {
 		return originalFile;
 	}
 
-	public String getModifiedFile()
-	{
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see data.IAction#getModifiedFile()
+	 */
+	public String getModifiedFile() {
 		return modifiedFile;
 	}
 
-	public FileLabel getLabel()
-	{
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see data.IAction#getLabel()
+	 */
+	public FileLabel getLabel() {
 		return label;
 	}
-	
+
 	// If this is executed, it is counted as an Error.
-	public boolean apply()
-	{
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see data.IAction#apply()
+	 */
+	public boolean apply() {
 		return false;
 	}
-	//Debug
-	public String toString()
-	{
-		return String.format("%s :: %s :: %s", counter, originalFile, modifiedFile);
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	public String toString() {
+		return String.format("%s :: %s :: %s", counter, originalFile,
+				modifiedFile);
 	}
 }
