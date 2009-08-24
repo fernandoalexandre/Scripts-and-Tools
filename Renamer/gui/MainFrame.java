@@ -82,7 +82,7 @@ public class MainFrame extends JFrame {
 	/**
 	 * Current project name.
 	 */
-	private static String projectName;
+	static String projectName;
 
 	/**
 	 * North panel of the main window.
@@ -102,7 +102,7 @@ public class MainFrame extends JFrame {
 	/**
 	 * Panel which shows selected thumbnail images.
 	 */
-	private static ImagePanel previewPanel;
+	static ImagePanel previewPanel;
 
 	/**
 	 * Status bar object.
@@ -112,12 +112,12 @@ public class MainFrame extends JFrame {
 	/**
 	 * Project name text field.
 	 */
-	private static JTextField projectNameField;
+	static JTextField projectNameField;
 
 	/**
 	 * Counter text field.
 	 */
-	private static JTextField counterField;
+	static JTextField counterField;
 
 	/**
 	 * Current counter value.
@@ -125,17 +125,12 @@ public class MainFrame extends JFrame {
 	protected static int counter;
 
 	/**
-	 * Points to the main window.
-	 */
-	protected final JFrame MainWindow = this;
-
-	/**
 	 * Tells if preview panel is showing or not.
 	 */
 	protected static boolean previewOpen;
 
 	/* Presentations Messages */
-	private static String ERR_NAN(String number) {
+	static String ERR_NAN(String number) {
 		return String.format("%s is not a number!", number);
 	}
 
@@ -151,7 +146,7 @@ public class MainFrame extends JFrame {
 
 	private static final String ERR_PREVIEW_NOT_SUPPORTED = "Preview for bmp is not supported.";
 
-	private static String PREVIEWING(String filename) {
+	static String PREVIEWING(String filename) {
 		return String.format("Previewing %s...", filename);
 	}
 
@@ -210,10 +205,10 @@ public class MainFrame extends JFrame {
 				}
 			}
 
-			public void keyReleased(KeyEvent e) {
+			public void keyReleased(KeyEvent e) { // Does Nothing
 			}
 
-			public void keyTyped(KeyEvent e) {
+			public void keyTyped(KeyEvent e) { // Does Nothing
 			}
 		}
 		KeyListener listener = new projectNameListener();
@@ -260,10 +255,10 @@ public class MainFrame extends JFrame {
 				}
 			}
 
-			public void keyReleased(KeyEvent e) {
+			public void keyReleased(KeyEvent e) { // Does Nothing
 			}
 
-			public void keyTyped(KeyEvent e) {
+			public void keyTyped(KeyEvent e) { // Does Nothing
 			}
 		}
 		KeyListener listener = new counterListener();
@@ -319,7 +314,7 @@ public class MainFrame extends JFrame {
 	public static String getFileName(String extension) {
 		if (counter < 10) {
 			return String
-					.format("%s_000%d.%s", projectName, counter, extension);
+			.format("%s_000%d.%s", projectName, counter, extension);
 		} else if (counter < 100) {
 			return String.format("%s_00%d.%s", projectName, counter, extension);
 		} else if (counter < 1000) {
@@ -369,19 +364,20 @@ public class MainFrame extends JFrame {
 	}
 
 	class currentFileListener implements MouseListener {
-		public void mouseClicked(MouseEvent e) {
+		public void mouseClicked(MouseEvent e) { // Does Nothing
 		}
 
-		public void mouseEntered(MouseEvent e) {
+		public void mouseEntered(MouseEvent e) { // Does Nothing
 		}
 
-		public void mouseExited(MouseEvent e) {
+		public void mouseExited(MouseEvent e) { // Does Nothing
 		}
 
 		/*
 		 * (non-Javadoc)
 		 * 
-		 * @see java.awt.event.MouseListener#mousePressed(java.awt.event.MouseEvent)
+		 * @see
+		 * java.awt.event.MouseListener#mousePressed(java.awt.event.MouseEvent)
 		 */
 		public void mousePressed(MouseEvent e) {
 			if ((e.getButton() == MouseEvent.BUTTON1)
@@ -437,9 +433,9 @@ public class MainFrame extends JFrame {
 		 */
 		private void updatePreviewWindow(FileLabel current) {
 			previewPanel.setImage(new ImageIcon(current.getImagePath()));
-			MainWindow.setPreferredSize(new Dimension(MAIN_WIDTH
+			MainFrame.this.setPreferredSize(new Dimension(MAIN_WIDTH
 					+ previewPanel.getWidth(), MAIN_HEIGHT));
-			MainWindow.pack();
+			MainFrame.this.pack();
 		}
 
 		/**
@@ -452,44 +448,45 @@ public class MainFrame extends JFrame {
 			previewPanel = new ImagePanel(current.getImagePath());
 
 			class previewListener implements MouseListener {
-				public void mouseClicked(MouseEvent e) {
+				public void mouseClicked(MouseEvent e) { // Does Nothing
 				}
 
-				public void mouseEntered(MouseEvent e) {
+				public void mouseEntered(MouseEvent e) { // Does Nothing
 				}
 
-				public void mouseExited(MouseEvent e) {
+				public void mouseExited(MouseEvent e) { // Does Nothing
 				}
 
 				public void mousePressed(MouseEvent e) {
 					normalWindow();
 				}
 
-				public void mouseReleased(MouseEvent e) {
+				public void mouseReleased(MouseEvent e) { // Does Nothing
 				}
 
 			}
 			MouseListener listener = new previewListener();
 			previewPanel.addMouseListener(listener);
 
-			MainWindow.setPreferredSize(new Dimension(MAIN_WIDTH
+			MainFrame.this.setPreferredSize(new Dimension(MAIN_WIDTH
 					+ previewPanel.getWidth(), MAIN_HEIGHT));
-			MainWindow.add(previewPanel, BorderLayout.EAST);
-			MainWindow.pack();
+			MainFrame.this.add(previewPanel, BorderLayout.EAST);
+			MainFrame.this.pack();
 		}
 
 		/**
 		 * Closes the preview panel.
 		 */
-		private void normalWindow() {
-			MainWindow.setPreferredSize(new Dimension(MAIN_WIDTH, MAIN_HEIGHT));
-			MainWindow.remove(previewPanel);
-			MainWindow.validate();
+		void normalWindow() {
+			MainFrame.this.setPreferredSize(new Dimension(MAIN_WIDTH,
+					MAIN_HEIGHT));
+			MainFrame.this.remove(previewPanel);
+			MainFrame.this.validate();
 			previewOpen = false;
-			MainWindow.pack();
+			MainFrame.this.pack();
 		}
 
-		public void mouseReleased(MouseEvent e) {
+		public void mouseReleased(MouseEvent e) { // Does Nothing
 		}
 	}
 }

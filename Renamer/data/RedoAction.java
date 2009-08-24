@@ -60,6 +60,7 @@ public class RedoAction extends Action {
 	 * 
 	 * @see data.Action#apply()
 	 */
+	@Override
 	public boolean apply() {
 		FileLabel curr = getLabel();
 		String newFileName = MainFrame.getFileName(curr.getExtension());

@@ -70,7 +70,7 @@ abstract class Action implements IAction {
 	 * @see data.IAction#getCounter()
 	 */
 	public int getCounter() {
-		return counter;
+		return this.counter;
 	}
 
 	/*
@@ -79,7 +79,7 @@ abstract class Action implements IAction {
 	 * @see data.IAction#getOriginalFile()
 	 */
 	public String getOriginalFile() {
-		return originalFile;
+		return this.originalFile;
 	}
 
 	/*
@@ -88,7 +88,7 @@ abstract class Action implements IAction {
 	 * @see data.IAction#getModifiedFile()
 	 */
 	public String getModifiedFile() {
-		return modifiedFile;
+		return this.modifiedFile;
 	}
 
 	/*
@@ -97,7 +97,7 @@ abstract class Action implements IAction {
 	 * @see data.IAction#getLabel()
 	 */
 	public FileLabel getLabel() {
-		return label;
+		return this.label;
 	}
 
 	// If this is executed, it is counted as an Error.
@@ -115,8 +115,9 @@ abstract class Action implements IAction {
 	 * 
 	 * @see java.lang.Object#toString()
 	 */
+	@Override
 	public String toString() {
-		return String.format("%s :: %s :: %s", counter, originalFile,
-				modifiedFile);
+		return String.format("%s :: %s :: %s", this.counter, this.originalFile,
+				this.modifiedFile);
 	}
 }

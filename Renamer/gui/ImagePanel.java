@@ -49,7 +49,7 @@ public class ImagePanel extends JPanel {
 	/**
 	 * Size of the panel
 	 */
-	private Dimension size;
+	private Dimension size_thumb;
 
 	/**
 	 * Creates an Image panel.
@@ -79,11 +79,11 @@ public class ImagePanel extends JPanel {
 	 */
 	public void setImage(ImageIcon img) {
 		this.image = img;
-		size = getThumbSize(image.getImage());
-		setPreferredSize(size);
-		setMinimumSize(size);
-		setMaximumSize(size);
-		setSize(size);
+		this.size_thumb = getThumbSize(this.image.getImage());
+		setPreferredSize(this.size_thumb);
+		setMinimumSize(this.size_thumb);
+		setMaximumSize(this.size_thumb);
+		setSize(this.size_thumb);
 		setLayout(null);
 		this.validate();
 	}
@@ -93,18 +93,19 @@ public class ImagePanel extends JPanel {
 	 * 
 	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
 	 */
+	@Override
 	public void paintComponent(Graphics g) {
 		int x = 0, y = 0;
 
-		Image img = thumb.getImage();
+		Image img = this.thumb.getImage();
 		if (img.getHeight(null) < MainFrame.MAIN_HEIGHT) {
 			y = (int) (MainFrame.MAIN_HEIGHT - (img.getHeight(null) * 1.2)) / 2;
-			size = new Dimension(size.width, size.height + img.getHeight(null)
-					/ 2);
-			setPreferredSize(size);
-			setMinimumSize(size);
-			setMaximumSize(size);
-			setSize(size);
+			this.size_thumb = new Dimension(this.size_thumb.width,
+					this.size_thumb.height + img.getHeight(null) / 2);
+			setPreferredSize(this.size_thumb);
+			setMinimumSize(this.size_thumb);
+			setMaximumSize(this.size_thumb);
+			setSize(this.size_thumb);
 			setLayout(null);
 			this.validate();
 		}
@@ -151,8 +152,8 @@ public class ImagePanel extends JPanel {
 	 *            Height of the thumbnail.
 	 */
 	private void getThumbnail(int width, int height) {
-		thumb = new ImageIcon(image.getImage().getScaledInstance(width, height,
-				Image.SCALE_SMOOTH));
+		this.thumb = new ImageIcon(this.image.getImage().getScaledInstance(
+				width, height, Image.SCALE_SMOOTH));
 	}
 
 }

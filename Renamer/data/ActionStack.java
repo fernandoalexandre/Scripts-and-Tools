@@ -40,8 +40,8 @@ public class ActionStack {
 	 * Creates an ActionStack.
 	 */
 	public ActionStack() {
-		undo = new Stack<IAction>();
-		redo = new Stack<IAction>();
+		this.undo = new Stack<IAction>();
+		this.redo = new Stack<IAction>();
 	}
 
 	/**
@@ -52,22 +52,22 @@ public class ActionStack {
 	 */
 	public void saveAction(IAction action) {
 		if (action.getClass().equals(RedoAction.class))
-			redo.add(action);
+			this.redo.add(action);
 		else
-			undo.add(action);
+			this.undo.add(action);
 	}
 
 	/**
 	 * Undo's an action.
 	 */
 	public void undo() {
-		if (!undo.empty()) {
-			IAction curr = undo.pop();
+		if (!this.undo.empty()) {
+			IAction curr = this.undo.pop();
 			if (!curr.apply()) {
-				undo.push(curr);
+				this.undo.push(curr);
 				return;
 			}
-			redo.push(new RedoAction(curr));
+			this.redo.push(new RedoAction(curr));
 		} else
 			MainFrame.setStatusMessage(MainFrame.ERR_NOACTION);
 	}
@@ -76,13 +76,13 @@ public class ActionStack {
 	 * Redo's an action.
 	 */
 	public void redo() {
-		if (!redo.empty()) {
-			IAction curr = redo.pop();
+		if (!this.redo.empty()) {
+			IAction curr = this.redo.pop();
 			if (!curr.apply()) {
-				redo.push(curr);
+				this.redo.push(curr);
 				return;
 			}
-			undo.push(new UndoAction(curr));
+			this.undo.push(new UndoAction(curr));
 		} else
 			MainFrame.setStatusMessage(MainFrame.ERR_NOACTION);
 	}

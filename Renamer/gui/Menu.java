@@ -25,6 +25,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.WindowConstants;
 
 /**
  * Represents the menu bar.
@@ -191,11 +192,11 @@ public class Menu extends JMenuBar {
 	/**
 	 * Creates and shows the About window.
 	 */
-	private void createNewAboutFrame() {
+	void createNewAboutFrame() {
 		JFrame about = new JFrame();
 		about.setPreferredSize(new Dimension(350, 130));
 		about.setLayout(new GridLayout(1, 1));
-		about.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		about.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
 		final JEditorPane editor = new JEditorPane();
 		about.setLocationRelativeTo(null);
@@ -217,11 +218,11 @@ public class Menu extends JMenuBar {
 	/**
 	 * Creates and shows the Help window.
 	 */
-	private void createNewHelpFrame() {
+	void createNewHelpFrame() {
 		JFrame help = new JFrame();
 		help.setPreferredSize(new Dimension(400, 200));
 		help.setLayout(new GridLayout(1, 1));
-		help.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		help.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		help.setLocationRelativeTo(null);
 
 		final JEditorPane editor = new JEditorPane();
