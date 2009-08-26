@@ -122,7 +122,7 @@ public class ImagePanel extends JPanel {
 	private Dimension getThumbSize(Image img) {
 		double ratio;
 		double height_ratio = img.getHeight(null)
-				/ (double) MainFrame.MAIN_HEIGHT * 1.2;
+				/ (double) MainFrame.MAIN_HEIGHT * 1.23;
 		double width_ratio = img.getWidth(null) / (double) MAX_WIDTH;
 
 		if (img.getHeight(null) == img.getWidth(null))

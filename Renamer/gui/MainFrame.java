@@ -87,7 +87,7 @@ public class MainFrame extends JFrame {
 	/**
 	 * North panel of the main window.
 	 */
-	private static JPanel northPanel;
+	private static JPanel mainPanel;
 
 	/**
 	 * North panel of northPanel.
@@ -173,15 +173,13 @@ public class MainFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		this.setTitle("Rename - " + WORKING_DIR);
-		northPanel = new JPanel();
-		northPanel.setLayout(new GridLayout(1, 2));
-		add(northPanel, BorderLayout.NORTH);
+		mainPanel = new JPanel();
+		mainPanel.setLayout(new BorderLayout());
+		add(mainPanel, BorderLayout.NORTH);
 
 		northMainPanel = new JPanel();
 		northMainPanel.setPreferredSize(new Dimension(MAIN_WIDTH, 35));
-		northMainPanel.setMaximumSize(new Dimension(MAIN_WIDTH, 35));
-		northMainPanel.setMinimumSize(new Dimension(MAIN_WIDTH, 35));
-		northPanel.add(northMainPanel);
+		mainPanel.add(northMainPanel, BorderLayout.WEST);
 
 		createProjectNameField();
 		createCounterField();
@@ -191,7 +189,7 @@ public class MainFrame extends JFrame {
 	}
 
 	/**
-	 * Creates projectNameField and adds it to northMainPanel.
+	 * Creates projectNameField and adds it to mainPanel.
 	 */
 	private void createProjectNameField() {
 		projectNameField = new JTextField(PROJECTFIELD_WIDTH);
@@ -216,8 +214,8 @@ public class MainFrame extends JFrame {
 
 		projectNameField.setText(DEFAULT_PROJECT_NAME);
 		projectName = DEFAULT_PROJECT_NAME;
-		northMainPanel.add(new JLabel("Project name: "), BorderLayout.WEST);
-		northMainPanel.add(projectNameField, BorderLayout.WEST);
+		northMainPanel.add(new JLabel("Project name: "), BorderLayout.NORTH);
+		northMainPanel.add(projectNameField, BorderLayout.NORTH);
 	}
 
 	/**
