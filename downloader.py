@@ -62,7 +62,7 @@ def http_dl(p_url, dest):
     resp = conn.getresponse()
     if resp.status == httplib.OK:
         print "Downloading %s to %s (%s bytes)..." % (p_url.path, dest, get_http_size(resp))
-        split = url.split('/')
+        split = p_url.path.split('/')
         save_file(resp.read(), dest, split[-1])
         print "Finished!"
     else:
@@ -103,7 +103,7 @@ def ftp_dl(p_url, dest):
         print "user anonymous, passwd anonymous@"
         try:
             conn.login()
-        else:
+        except:
             print "No anonymous connections allowed."
             conn.close()
             return
