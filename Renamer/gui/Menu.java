@@ -17,10 +17,8 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -204,7 +202,7 @@ public class Menu extends JMenuBar {
 		editor.setEditable(false); // we're browsing not editing
 		editor.setContentType("text/html"); // must specify HTML text
 
-		String message = "<html><head></head><body style=\"background : #DDDDDD\">"
+		String message = "<html><head></head><body style=\"background : #EEEEEE\">"
 				+ "<center><p><b>About</b></p>"
 				+ "<p>Renamer v1.0</p>"
 				+ "<p>Made by Fernando \"kernl\" Alexandre</p></center></body></html>";
@@ -230,13 +228,13 @@ public class Menu extends JMenuBar {
 		editor.setEditable(false); // we're browsing not editing
 		editor.setContentType("text/html"); // must specify HTML text
 
-		String message = "<html><head></head><body style=\"background : #DDDDDD\">"
-				+ "<p><center><b>How-To</b></center></p>"
+		String message = "<html><head></head><body style=\"background : #EEEEEE\">"
+				+ "<center><p><b>How-To</b></p>"
 				+ "<p>On startup use the 'Open' menu choose the folder where the pictures "
 				+ "to-be-renamed are.</p>"
 				+ "<p>To preview: Right-click the name of the file to preview.</p>"
 				+ "<p>To rename: Double-left-click the name of the file to rename to the "
-				+ "format (project_name)_0000.(extension).</p></body></html>";
+				+ "format (project_name)_0000.(extension).</p></center></body></html>";
 		editor.setText(message); // specify the text to display
 
 		help.add(editor, BorderLayout.CENTER);

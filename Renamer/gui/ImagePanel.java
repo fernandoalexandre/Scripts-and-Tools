@@ -63,7 +63,7 @@ public class ImagePanel extends JPanel {
 	 *            ImageIcon object to be shown.
 	 */
 	public ImagePanel(ImageIcon img) {
-		setImage(img);
+		this.setImage(img);
 	}
 
 	/**
@@ -73,10 +73,10 @@ public class ImagePanel extends JPanel {
 	 *            Image to be shown.
 	 */
 	public void setImage(ImageIcon img) {
+		this.thumb = null;
+		this.size_thumb = null;
 		this.size_thumb = getThumbSize(img.getImage());
 		setPreferredSize(this.size_thumb);
-		setMinimumSize(this.size_thumb);
-		setMaximumSize(this.size_thumb);
 		setSize(this.size_thumb);
 		setLayout(null);
 		this.validate();
@@ -89,10 +89,7 @@ public class ImagePanel extends JPanel {
 	 */
 	@Override
 	public void paintComponent(Graphics g) {
-		int x = 0, y = 0;
-
-		Image img = this.thumb.getImage();
-		g.drawImage(img, x, y, null);
+		g.drawImage(this.thumb.getImage(), 0, 0, null);
 	}
 
 	/**

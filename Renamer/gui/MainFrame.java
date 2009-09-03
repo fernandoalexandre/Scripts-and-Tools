@@ -41,6 +41,8 @@ import javax.swing.JTextField;
  */
 public class MainFrame extends JFrame {
 
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * Width of main window.
 	 */
@@ -50,9 +52,7 @@ public class MainFrame extends JFrame {
 	 * Height of main window.
 	 */
 	protected static final int MAIN_HEIGHT = 550;
-
-	private static final long serialVersionUID = 1L;
-
+	
 	/**
 	 * Project name field width.
 	 */
@@ -480,6 +480,7 @@ public class MainFrame extends JFrame {
 			MainFrame.this.remove(previewPanel);
 			MainFrame.this.validate();
 			previewOpen = false;
+			previewPanel = null;
 			MainFrame.this.pack();
 		}
 
