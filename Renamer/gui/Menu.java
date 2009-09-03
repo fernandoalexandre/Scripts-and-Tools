@@ -15,6 +15,7 @@
  */
 package gui;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -195,7 +196,7 @@ public class Menu extends JMenuBar {
 	void createNewAboutFrame() {
 		JFrame about = new JFrame();
 		about.setPreferredSize(new Dimension(350, 130));
-		about.setLayout(new GridLayout(1, 1));
+		about.setLayout(new BorderLayout());
 		about.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
 		final JEditorPane editor = new JEditorPane();
@@ -209,7 +210,7 @@ public class Menu extends JMenuBar {
 				+ "<p>Made by Fernando \"kernl\" Alexandre</p></center></body></html>";
 		editor.setText(message); // specify the text to display
 
-		about.add(editor);
+		about.add(editor, BorderLayout.CENTER);
 		about.setVisible(true);
 		about.validate();
 		about.pack();
@@ -221,7 +222,7 @@ public class Menu extends JMenuBar {
 	void createNewHelpFrame() {
 		JFrame help = new JFrame();
 		help.setPreferredSize(new Dimension(400, 200));
-		help.setLayout(new GridLayout(1, 1));
+		help.setLayout(new BorderLayout());
 		help.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		help.setLocationRelativeTo(null);
 
@@ -238,7 +239,7 @@ public class Menu extends JMenuBar {
 				+ "format (project_name)_0000.(extension).</p></body></html>";
 		editor.setText(message); // specify the text to display
 
-		help.add(editor);
+		help.add(editor, BorderLayout.CENTER);
 		help.setVisible(true);
 		help.validate();
 		help.pack();

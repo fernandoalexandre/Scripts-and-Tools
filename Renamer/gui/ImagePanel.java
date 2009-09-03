@@ -37,11 +37,6 @@ public class ImagePanel extends JPanel {
 	protected static final int MAX_WIDTH = 550;
 
 	/**
-	 * Image that is shown.
-	 */
-	private ImageIcon image;
-
-	/**
 	 * Thumb of the image.
 	 */
 	private ImageIcon thumb;
@@ -78,8 +73,7 @@ public class ImagePanel extends JPanel {
 	 *            Image to be shown.
 	 */
 	public void setImage(ImageIcon img) {
-		this.image = img;
-		this.size_thumb = getThumbSize(this.image.getImage());
+		this.size_thumb = getThumbSize(img.getImage());
 		setPreferredSize(this.size_thumb);
 		setMinimumSize(this.size_thumb);
 		setMaximumSize(this.size_thumb);
@@ -98,17 +92,6 @@ public class ImagePanel extends JPanel {
 		int x = 0, y = 0;
 
 		Image img = this.thumb.getImage();
-		if (img.getHeight(null) < MainFrame.MAIN_HEIGHT) {
-			y = (int) (MainFrame.MAIN_HEIGHT - (img.getHeight(null) * 1.2)) / 2;
-			this.size_thumb = new Dimension(this.size_thumb.width,
-					this.size_thumb.height + img.getHeight(null) / 2);
-			setPreferredSize(this.size_thumb);
-			setMinimumSize(this.size_thumb);
-			setMaximumSize(this.size_thumb);
-			setSize(this.size_thumb);
-			setLayout(null);
-			this.validate();
-		}
 		g.drawImage(img, x, y, null);
 	}
 
@@ -134,11 +117,11 @@ public class ImagePanel extends JPanel {
 		int height = (int) (img.getHeight(null) / ratio);
 
 		if (img.getHeight(null) == img.getWidth(null))
-			getThumbnail(height, width);
+			getThumbnail(img, height, width);
 		else if (ratio == height_ratio)
-			getThumbnail(-1, height);
+			getThumbnail(img, -1, height);
 		else
-			getThumbnail(width, -1);
+			getThumbnail(img, width, -1);
 
 		return new Dimension(width, height);
 	}
@@ -151,8 +134,8 @@ public class ImagePanel extends JPanel {
 	 * @param height
 	 *            Height of the thumbnail.
 	 */
-	private void getThumbnail(int width, int height) {
-		this.thumb = new ImageIcon(this.image.getImage().getScaledInstance(
+	private void getThumbnail(Image img, int width, int height) {
+		this.thumb = new ImageIcon(img.getScaledInstance(
 				width, height, Image.SCALE_SMOOTH));
 	}
 

@@ -18,7 +18,6 @@ package gui;
 import data.*;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 import java.io.File;
 import java.awt.Component;
 import java.awt.event.KeyEvent;

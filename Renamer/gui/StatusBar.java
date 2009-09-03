@@ -44,6 +44,6 @@ public class StatusBar extends JLabel {
 	 *            String message to be shown.
 	 */
 	public void setMessage(String message) {
-		setText(" " + message);
+		super.setText(String.format(" %s", message));
 	}
 }
