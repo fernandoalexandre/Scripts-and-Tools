@@ -22,7 +22,7 @@ import gui.*;
  * 
  * @author Fernando Alexandre
  */
-public class Main {
+public class Renamer {
 
 	/**
 	 * Main window.
