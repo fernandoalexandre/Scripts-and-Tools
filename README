@@ -7,18 +7,15 @@ Example of usage:
 % python downloader.py ~ http://www.python.org/ftp/python/3.1.1/Python-3.1.1.tgz
     ftp://someserver.com/some-stuff.zip
 
-Renamer (Java) -
+EVEMineralCost (Python) -
+EVE Online script to grab mineral prices from eve-central and calculate how much
+ a certain quantity of minerals cost based on those prices. After the initial 
+execution the user will be prompted for amounts, leave blank for 0 quantity of
+ the mineral.
 
-Useful for frame by frame animation. Renames image files in a folder to a
-sequence as "project_0001.jpg" and so on.
+Example of usage:
+% python EVEMineralCost.py
 
-Usage:
-Double-click to Rename.
-Right click to Preview.
-
-Use the appropriate fields to change project name and counter.
-
-A pre-compiled version can be found here < http://bit.ly/renamer >.
 
 Image Organize (Python) -
 
@@ -33,6 +30,19 @@ Example of usage:
 
 Will transfer all the images by resolutions from ~/Desktop/Wallpapers to
 ~/Pictures/Wallpapers.
+
+Renamer (Java) -
+
+Useful for frame by frame animation. Renames image files in a folder to a
+sequence as "project_0001.jpg" and so on.
+
+Usage:
+Double-click to Rename.
+Right click to Preview.
+
+Use the appropriate fields to change project name and counter.
+
+A pre-compiled version can be found here < http://bit.ly/renamer >.
 
 All the code in this repository is released under GPLv3.
 For more information about GPLv3 please go to <http://www.gnu.org/licenses/>.
