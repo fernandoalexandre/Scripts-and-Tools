@@ -62,20 +62,20 @@ def print_results():
     print "\nResults:"
     for i in range(0, len(names)):
         print "%s:   %.2f" % (names[i], results[i])
-    print 'Total:   %.2f ISK' % getTotal()
     return
 
 # Sums all the elements on the list <results> and returns the result.
 def getTotal():
     result = 0.0;
-    for i in range(0, len(results)):
-        result += results[i]
+    for i in results:
+        result += i
     return result
 
 def main():
     grab_mineral_prices()
     process()
     print_results()
+    print 'Total:   %.2f ISK' % getTotal()
 
 if __name__ == "__main__":
     main()
