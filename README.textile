@@ -1,31 +1,34 @@
-botNameRemover (Python) -
-Removes the botname of files in the format 'botName.nameOfFile.extension' to
-'nameOfFile.extension'.
-Warning: It will apply this transformation to all files in the folder.
+*botNameRemover* (_Python_) -
+Removes the botname of files in the format "botName.nameOfFile.extension" to
+"nameOfFile.extension".
+
+_Warning_: It will apply this transformation to all files in the folder.
 
 Example of usage:
+
 % python botNameRemover.py ~
 
-downloader (Python) -
+*downloader* (_Python_) -
 
 A simple command line downloader. Supports HTTP/FTP. For FTP there is a
 prompt asking for a username/password which can be left blank for anonymous login.
 
 Example of usage:
+
 % python downloader.py ~ http://www.python.org/ftp/python/3.1.1/Python-3.1.1.tgz
     ftp://someserver.com/some-stuff.zip
 
-EVEMineralCost (Python) -
+*EVEMineralCost* (_Python_) -
 EVE Online script to grab mineral prices from eve-central and calculate how much
  a certain quantity of minerals cost based on those prices. After the initial
 execution the user will be prompted for amounts, leave blank for 0 quantity of
  the mineral.
 
 Example of usage:
+
 % python EVEMineralCost.py
 
-
-Image Organize (Python) -
+*Image Organize* (_Python_) -
 
 Organizes Images by resolutions. The way to define which resolutions
 to sort is done by creating the folders previously with the name
@@ -34,23 +37,25 @@ resolutions will be sorted to "unsorted" folder (is automatically created if it
 doesn't exist).
 
 Example of usage:
+
 % python WallpaperOrganize.py ~/Desktop/Wallpapers
 
 Will transfer all the images by resolutions from ~/Desktop/Wallpapers to
 ~/Pictures/Wallpapers.
 
-Renamer (Java) -
+*Renamer* (_Java_) -
 
 Useful for frame by frame animation. Renames image files in a folder to a
 sequence as "project_0001.jpg" and so on.
 
 Usage:
+
 Double-click to Rename.
 Right click to Preview.
 
 Use the appropriate fields to change project name and counter.
 
-A pre-compiled version can be found here < http://bit.ly/renamer >.
+A pre-compiled version can be found "here":http://bit.ly/renamer.
 
 All the code in this repository is released under GPLv3.
-For more information about GPLv3 please go to <http://www.gnu.org/licenses/>.
+For more information about GPLv3 please go "here":http://www.gnu.org/licenses/.
